@@ -1,8 +1,7 @@
- 
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
+import { ArrowRight, ArrowLeft } from "lucide-react";
 import { getProducts } from "../services/api";
 import ProductFilters from "../Components/ProductFilters";
 import ProductCard from "../Components/ProductCard";
@@ -18,7 +17,7 @@ const ProductList = () => {
 
   // Search comes from Navbar
   const q = searchParams.get("q") || "";
-
+  const location = useLocation();
   // Filters come from ProductFilters
   const category = searchParams.get("category") || "";
 
@@ -144,20 +143,36 @@ const ProductList = () => {
       {/* FILTERS */}
       <ProductFilters filters={filters} setFilters={setFilters} />
       <div className="mb-5 flex items-end justify-between">
-        <div className=" inli ne-block">
+        <div className="inline-block">
           <h2 className="text-lg font-semibold">
             Grab the best deal on{" "}
-            <span className="text-cyan-600">Smart Phones</span>
+            <span className="text-cyan-600">
+              {filters.category || "All Products"}
+            </span>
           </h2>
+
           <div className="mt-2 h-1 w-full rounded-full bg-cyan-600" />
         </div>
-        <Link
-          to="/products"
-          className="flex items-center gap-1 text-sm text-gray-500"
-        >
-          View All
-          <ArrowRight size={15} />
-        </Link>
+
+        {/* Right side buttons */}
+        <div className="flex items-center gap-4">
+          {location.pathname !== "/" && (
+            <Link
+              to="/"
+              className="flex items-center gap-1 text-sm text-gray-500 hover:text-cyan-600"
+            >
+              <ArrowLeft size={15} />
+              Back
+            </Link>
+          )}
+          <Link
+            to="/products"
+            className="flex items-center gap-1 text-sm text-gray-500 hover:text-cyan-600"
+          >
+            View All
+            <ArrowRight size={15} />
+          </Link>
+        </div>
       </div>
 
       {/* Loading */}

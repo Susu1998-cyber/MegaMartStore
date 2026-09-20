@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Trash2, ShoppingBag } from "lucide-react";
+import { Trash2, ShoppingBag, ArrowLeft } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { fetchCart, updateItem, removeItem } from "../Redux/CartSlice";
 import { createOrder } from "../services/api";
@@ -16,7 +16,7 @@ const Cart = () => {
   const [ordering, setOrdering] = useState(false);
   const [orderError, setOrderError] = useState("");
 
-  useEffect(() => { 
+  useEffect(() => {
     if (!localStorage.getItem("token")) {
       navigate("/login");
       return;
@@ -75,12 +75,24 @@ const Cart = () => {
 
   return (
     <main className="mx-auto min-h-screen max-w-7xl px-4 py-8">
-      <div className="mb-8">
-        <h1 className="text-2xl font-bold">Shopping Cart</h1>
+      <div className="mb-8 flex items-center justify-between">
+        {/* Left */}
+        <div>
+          <h1 className="text-2xl font-bold">Shopping Cart</h1>
 
-        <p className="mt-1 text-sm text-gray-500">
-          Review your selected products.
-        </p>
+          <p className="mt-1 text-sm text-gray-500">
+            Review your selected products.
+          </p>
+        </div>
+
+        {/* Right */}
+        <button
+          onClick={() => navigate(-2)}
+          className="flex items-center gap-2 text-sm text-gray-500 hover:text-cyan-600"
+        >
+          <ArrowLeft size={17} />
+          Back
+        </button>
       </div>
 
       {error && (
