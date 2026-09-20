@@ -21,7 +21,7 @@ const ProductFilters = ({ filters, setFilters }) => {
     setFilters((prev) => ({
       ...prev,
       // category: "",
-       category: " ",
+      category: "",
       minPrice: "",
       maxPrice: "",
       sort: "",

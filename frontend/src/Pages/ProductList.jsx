@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { Link, useLocation } from "react-router-dom";
-import { ArrowRight, ArrowLeft } from "lucide-react";
+import { Link ,useLocation } from "react-router-dom";
+import { ArrowRight,ArrowLeft } from "lucide-react";
 import { getProducts } from "../services/api";
 import ProductFilters from "../Components/ProductFilters";
 import ProductCard from "../Components/ProductCard";
@@ -9,7 +9,6 @@ import Loader from "../Components/Loader";
 
 const ProductList = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-
   const [products, setProducts] = useState([]);
   const [pagination, setPagination] = useState({});
   const [loading, setLoading] = useState(true);
@@ -17,7 +16,9 @@ const ProductList = () => {
 
   // Search comes from Navbar
   const q = searchParams.get("q") || "";
+
   const location = useLocation();
+
   // Filters come from ProductFilters
   const category = searchParams.get("category") || "";
 
@@ -88,12 +89,6 @@ const ProductList = () => {
       params.delete("page");
     }
 
-    /*
-      Important:
-      q is NOT changed here.
-      q is controlled by Navbar.
-    */
-
     setSearchParams(params);
   };
 
@@ -146,33 +141,32 @@ const ProductList = () => {
         <div className="inline-block">
           <h2 className="text-lg font-semibold">
             Grab the best deal on{" "}
-            <span className="text-cyan-600">
-              {filters.category || "All Products"}
-            </span>
+            <span className="text-cyan-600">{category || "All Products"}</span>
+            {/* <span className="text-cyan-600">MegaMart Products</span> */}
           </h2>
 
           <div className="mt-2 h-1 w-full rounded-full bg-cyan-600" />
         </div>
 
-        {/* Right side buttons */}
-        <div className="flex items-center gap-4">
-          {location.pathname !== "/" && (
-            <Link
-              to="/"
-              className="flex items-center gap-1 text-sm text-gray-500 hover:text-cyan-600"
-            >
-              <ArrowLeft size={15} />
-              Back
-            </Link>
-          )}
-          <Link
-            to="/products"
-            className="flex items-center gap-1 text-sm text-gray-500 hover:text-cyan-600"
-          >
-            View All
-            <ArrowRight size={15} />
-          </Link>
-        </div>
+    <div className="flex items-center gap-4">
+  {location.pathname !== "/" && (
+    <Link
+      to="/"
+      className="flex items-center gap-1 text-sm text-gray-500 hover:text-cyan-600"
+    >
+      <ArrowLeft size={15} />
+      Back
+    </Link>
+  )}
+
+  <Link
+    to="/products"
+    className="flex items-center gap-1 text-sm text-gray-500 hover:text-cyan-600"
+  >
+    View All
+    <ArrowRight size={15} />
+  </Link>
+</div>
       </div>
 
       {/* Loading */}
