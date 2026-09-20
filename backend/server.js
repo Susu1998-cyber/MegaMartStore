@@ -19,17 +19,6 @@ app.use(cors());
 
 app.use(express.json());
 
-// Health Check
-// =========================
-
-app.get("/", (req, res) => {
-  res.status(200).json({
-    success: true,
-    message: "MegaMart API is running",
-  });
-});
-
-// =========================
 // API Routes
 // =========================
 
