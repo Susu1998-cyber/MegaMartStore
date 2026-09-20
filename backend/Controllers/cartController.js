@@ -2,7 +2,6 @@ const Cart = require("../Model/Cart");
 const Product = require("../Model/Product");
 
 // GET /api/cart
-// GET /api/cart
 const getCart = async (req, res) => {
   try {
     const cart = await Cart.findOne({
@@ -112,7 +111,7 @@ const addToCart = async (req, res) => {
         message: "Variant not found",
       });
     }
-
+    
     if (variant.stock < quantity) {
       return res.status(400).json({
         success: false,
@@ -176,72 +175,6 @@ const addToCart = async (req, res) => {
   }
 };
 
-// PATCH /api/cart/items/:id
-// const updateCartItem = async (req, res) => {
-//   try {
-//     const { quantity } = req.body;
-
-//     if (!quantity || quantity < 1) {
-//       return res.status(400).json({
-//         success: false,
-//         message: "Quantity must be at least 1",
-//       });
-//     }
-
-//     const cart = await Cart.findOne({
-//       user: req.user._id,
-//     });
-
-//     if (!cart) {
-//       return res.status(404).json({
-//         success: false,
-//         message: "Cart not found",
-//       });
-//     }
-
-//     const item = cart.items.id(req.params.id);
-
-//     if (!item) {
-//       return res.status(404).json({
-//         success: false,
-//         message: "Cart item not found",
-//       });
-//     }
-
-//     const product = await Product.findById(item.product);
-
-//     const variant = product?.variants.id(item.variantId);
-
-//     if (!variant) {
-//       return res.status(404).json({
-//         success: false,
-//         message: "Product variant no longer exists",
-//       });
-//     }
-
-//     if (quantity > variant.stock) {
-//       return res.status(400).json({
-//         success: false,
-//         message: `Only ${variant.stock} item(s) available`,
-//       });
-//     }
-
-//     item.quantity = quantity;
-
-//     await cart.save();
-
-//     res.json({
-//       success: true,
-//       message: "Cart updated",
-//       data: cart,
-//     });
-//   } catch (error) {
-//     res.status(500).json({
-//       success: false,
-//       message: error.message,
-//     });
-//   }
-// };
 const updateCartItem = async (req, res) => {
   try {
     const { quantity } = req.body;
@@ -326,45 +259,6 @@ const updateCartItem = async (req, res) => {
     });
   }
 };
-// DELETE /api/cart/items/:id
-// const removeCartItem = async (req, res) => {
-//   try {
-//     const cart = await Cart.findOne({
-//       user: req.user._id,
-//     });
-
-//     if (!cart) {
-//       return res.status(404).json({
-//         success: false,
-//         message: "Cart not found",
-//       });
-//     }
-
-//     const item = cart.items.id(req.params.id);
-
-//     if (!item) {
-//       return res.status(404).json({
-//         success: false,
-//         message: "Cart item not found",
-//       });
-//     }
-
-//     item.deleteOne();
-
-//     await cart.save();
-
-//     res.json({
-//       success: true,
-//       message: "Item removed",
-//       data: cart,
-//     });
-//   } catch (error) {
-//     res.status(500).json({
-//       success: false,
-//       message: error.message,
-//     });
-//   }
-// };
 
 const removeCartItem = async (req, res) => {
   try {
