@@ -21,6 +21,10 @@ const variantSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  oldPrice: {
+    type: Number,
+    default: 0,
+  },
 
   stock: {
     type: Number,

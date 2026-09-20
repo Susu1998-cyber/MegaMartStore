@@ -12,13 +12,16 @@ const products = [
       "Premium Samsung smartphone with powerful performance and camera.",
     category: "Mobile",
     brand: "Samsung",
-    images: ["https://example.com/samsung-s22.jpg"],
+    images: [
+      "https://placehold.co/600x400/222222/FFFFFF/png?text=Samsung+Galaxy+S22+Ultra",
+    ],
     variants: [
       {
         size: "128GB",
         color: "Black",
         sku: "SAM-S22-BLK-128",
         price: 59999,
+        oldPrice: 64999,
         stock: 10,
       },
       {
@@ -26,6 +29,7 @@ const products = [
         color: "Green",
         sku: "SAM-S22-GRN-256",
         price: 64999,
+        oldPrice: 69999,
         stock: 5,
       },
     ],
@@ -38,13 +42,14 @@ const products = [
     description: "Apple iPhone 15 with advanced camera and powerful processor.",
     category: "Mobile",
     brand: "Apple",
-    images: ["https://example.com/iphone15.jpg"],
+    images: ["https://placehold.co/600x400/222222/FFFFFF/png?text=iPhone+15"],
     variants: [
       {
         size: "128GB",
         color: "Black",
         sku: "IPH15-BLK-128",
         price: 69999,
+        oldPrice: 74999,
         stock: 8,
       },
       {
@@ -52,6 +57,7 @@ const products = [
         color: "Blue",
         sku: "IPH15-BLU-256",
         price: 79999,
+        oldPrice: 84999,
         stock: 4,
       },
     ],
@@ -64,13 +70,16 @@ const products = [
     description: "Stylish Realme smartphone with excellent performance.",
     category: "Mobile",
     brand: "Realme",
-    images: ["https://example.com/realme13.jpg"],
+    images: [
+      "https://placehold.co/600x400/222222/FFFFFF/png?text=Realme+13+Pro",
+    ],
     variants: [
       {
         size: "128GB",
         color: "Gold",
         sku: "REALME13-GLD-128",
         price: 24999,
+        oldPrice: 29999,
         stock: 12,
       },
       {
@@ -78,6 +87,7 @@ const products = [
         color: "Green",
         sku: "REALME13-GRN-256",
         price: 27999,
+        oldPrice: 32999,
         stock: 7,
       },
     ],
@@ -90,13 +100,14 @@ const products = [
     description: "High-performance OnePlus smartphone with premium display.",
     category: "Mobile",
     brand: "OnePlus",
-    images: ["https://example.com/oneplus12.jpg"],
+    images: ["https://placehold.co/600x400/222222/FFFFFF/png?text=OnePlus+12"],
     variants: [
       {
         size: "256GB",
         color: "Black",
         sku: "OP12-BLK-256",
         price: 59999,
+        oldPrice: 64999,
         stock: 9,
       },
       {
@@ -104,6 +115,7 @@ const products = [
         color: "Green",
         sku: "OP12-GRN-512",
         price: 64999,
+        oldPrice: 69999,
         stock: 6,
       },
     ],
@@ -116,13 +128,16 @@ const products = [
     description: "Google Pixel smartphone with advanced AI camera features.",
     category: "Mobile",
     brand: "Google",
-    images: ["https://example.com/pixel8.jpg"],
+    images: [
+      "https://placehold.co/600x400/222222/FFFFFF/png?text=Google+Pixel+8",
+    ],
     variants: [
       {
         size: "128GB",
         color: "Black",
         sku: "PIX8-BLK-128",
         price: 59999,
+        oldPrice: 69999,
         stock: 8,
       },
       {
@@ -130,6 +145,7 @@ const products = [
         color: "Blue",
         sku: "PIX8-BLU-256",
         price: 65999,
+        oldPrice: 75999,
         stock: 4,
       },
     ],
@@ -142,13 +158,14 @@ const products = [
     description: "Premium Xiaomi smartphone with flagship specifications.",
     category: "Mobile",
     brand: "Xiaomi",
-    images: ["https://example.com/xiaomi14.jpg"],
+    images: ["https://placehold.co/600x400/222222/FFFFFF/png?text=Xiaomi+14"],
     variants: [
       {
         size: "256GB",
         color: "Black",
         sku: "XIA14-BLK-256",
         price: 49999,
+        oldPrice: 54999,
         stock: 10,
       },
       {
@@ -156,6 +173,7 @@ const products = [
         color: "White",
         sku: "XIA14-WHT-512",
         price: 54999,
+        oldPrice: 59999,
         stock: 5,
       },
     ],
@@ -168,13 +186,16 @@ const products = [
     description: "Elegant Vivo smartphone with a powerful camera setup.",
     category: "Mobile",
     brand: "Vivo",
-    images: ["https://example.com/vivo-v30.jpg"],
+    images: [
+      "https://placehold.co/600x400/222222/FFFFFF/png?text=Vivo+V30+Pro",
+    ],
     variants: [
       {
         size: "256GB",
         color: "Black",
         sku: "VIVO30-BLK-256",
         price: 41999,
+        oldPrice: 46999,
         stock: 11,
       },
       {
@@ -182,6 +203,7 @@ const products = [
         color: "Blue",
         sku: "VIVO30-BLU-512",
         price: 46999,
+        oldPrice: 51999,
         stock: 5,
       },
     ],
@@ -194,13 +216,16 @@ const products = [
     description: "Unique smartphone with a distinctive transparent design.",
     category: "Mobile",
     brand: "Nothing",
-    images: ["https://example.com/nothing-phone2.jpg"],
+    images: [
+      "https://placehold.co/600x400/222222/FFFFFF/png?text=Nothing+Phone+2",
+    ],
     variants: [
       {
         size: "128GB",
         color: "Black",
         sku: "NOTHING2-BLK-128",
         price: 34999,
+        oldPrice: 39999,
         stock: 10,
       },
       {
@@ -208,6 +233,7 @@ const products = [
         color: "White",
         sku: "NOTHING2-WHT-256",
         price: 39999,
+        oldPrice: 44999,
         stock: 6,
       },
     ],
@@ -220,13 +246,16 @@ const products = [
     description: "Mid-range Samsung smartphone with premium design.",
     category: "Mobile",
     brand: "Samsung",
-    images: ["https://example.com/galaxy-a55.jpg"],
+    images: [
+      "https://placehold.co/600x400/222222/FFFFFF/png?text=Samsung+Galaxy+A55",
+    ],
     variants: [
       {
         size: "128GB",
         color: "Blue",
         sku: "SAMA55-BLU-128",
         price: 29999,
+        oldPrice: 34999,
         stock: 15,
       },
       {
@@ -234,6 +263,7 @@ const products = [
         color: "Black",
         sku: "SAMA55-BLK-256",
         price: 33999,
+        oldPrice: 38999,
         stock: 8,
       },
     ],
@@ -246,13 +276,16 @@ const products = [
     description: "Affordable smartphone with a high-resolution camera.",
     category: "Mobile",
     brand: "Redmi",
-    images: ["https://example.com/redmi-note13.jpg"],
+    images: [
+      "https://placehold.co/600x400/222222/FFFFFF/png?text=Redmi+Note+13+Pro",
+    ],
     variants: [
       {
         size: "128GB",
         color: "Black",
         sku: "RED13-BLK-128",
         price: 24999,
+        oldPrice: 29999,
         stock: 18,
       },
       {
@@ -260,6 +293,7 @@ const products = [
         color: "Purple",
         sku: "RED13-PRP-256",
         price: 27999,
+        oldPrice: 32999,
         stock: 10,
       },
     ],
@@ -272,13 +306,16 @@ const products = [
     description: "Comfortable running shoes designed for everyday training.",
     category: "Fashion",
     brand: "Nike",
-    images: ["https://example.com/nike-shoes.jpg"],
+    images: [
+      "https://placehold.co/600x400/222222/FFFFFF/png?text=Nike+Running+Shoes",
+    ],
     variants: [
       {
         size: "8",
         color: "Black",
         sku: "NIKE-RUN-BLK-8",
         price: 4999,
+        oldPrice: 5999,
         stock: 10,
       },
       {
@@ -286,6 +323,7 @@ const products = [
         color: "Black",
         sku: "NIKE-RUN-BLK-9",
         price: 4999,
+        oldPrice: 5999,
         stock: 5,
       },
       {
@@ -293,6 +331,7 @@ const products = [
         color: "White",
         sku: "NIKE-RUN-WHT-10",
         price: 5299,
+        oldPrice: 6299,
         stock: 3,
       },
     ],
@@ -305,13 +344,16 @@ const products = [
     description: "Premium running shoes with comfortable cushioning.",
     category: "Fashion",
     brand: "Adidas",
-    images: ["https://example.com/adidas-ultraboost.jpg"],
+    images: [
+      "https://placehold.co/600x400/222222/FFFFFF/png?text=Adidas+Ultraboost",
+    ],
     variants: [
       {
         size: "8",
         color: "White",
         sku: "ADI-UB-WHT-8",
         price: 8999,
+        oldPrice: 10999,
         stock: 8,
       },
       {
@@ -319,6 +361,7 @@ const products = [
         color: "Black",
         sku: "ADI-UB-BLK-9",
         price: 8999,
+        oldPrice: 10999,
         stock: 6,
       },
       {
@@ -326,6 +369,7 @@ const products = [
         color: "Blue",
         sku: "ADI-UB-BLU-10",
         price: 9299,
+        oldPrice: 11499,
         stock: 4,
       },
     ],
@@ -338,13 +382,16 @@ const products = [
     description: "Lightweight sports shoes suitable for workouts and running.",
     category: "Fashion",
     brand: "Puma",
-    images: ["https://example.com/puma-shoes.jpg"],
+    images: [
+      "https://placehold.co/600x400/222222/FFFFFF/png?text=Puma+Sports+Shoes",
+    ],
     variants: [
       {
         size: "8",
         color: "Black",
         sku: "PUMA-SP-BLK-8",
         price: 3999,
+        oldPrice: 4999,
         stock: 12,
       },
       {
@@ -352,6 +399,7 @@ const products = [
         color: "Grey",
         sku: "PUMA-SP-GRY-9",
         price: 3999,
+        oldPrice: 4999,
         stock: 9,
       },
       {
@@ -359,6 +407,7 @@ const products = [
         color: "White",
         sku: "PUMA-SP-WHT-10",
         price: 4299,
+        oldPrice: 5299,
         stock: 5,
       },
     ],
@@ -371,13 +420,16 @@ const products = [
     description: "Classic slim-fit denim jeans for everyday wear.",
     category: "Fashion",
     brand: "Levis",
-    images: ["https://example.com/levis-jeans.jpg"],
+    images: [
+      "https://placehold.co/600x400/222222/FFFFFF/png?text=Levis+Slim+Fit+Jeans",
+    ],
     variants: [
       {
         size: "30",
         color: "Blue",
         sku: "LEVIS-SLIM-BLU-30",
         price: 2999,
+        oldPrice: 3999,
         stock: 10,
       },
       {
@@ -385,6 +437,7 @@ const products = [
         color: "Blue",
         sku: "LEVIS-SLIM-BLU-32",
         price: 2999,
+        oldPrice: 3999,
         stock: 8,
       },
       {
@@ -392,6 +445,7 @@ const products = [
         color: "Black",
         sku: "LEVIS-SLIM-BLK-34",
         price: 3199,
+        oldPrice: 4199,
         stock: 6,
       },
     ],
@@ -404,13 +458,16 @@ const products = [
     description: "Comfortable casual shirt suitable for everyday use.",
     category: "Fashion",
     brand: "Roadster",
-    images: ["https://example.com/roadster-shirt.jpg"],
+    images: [
+      "https://placehold.co/600x400/222222/FFFFFF/png?text=Roadster+Casual+Shirt",
+    ],
     variants: [
       {
         size: "M",
         color: "Blue",
         sku: "ROAD-SHIRT-BLU-M",
         price: 1299,
+        oldPrice: 1999,
         stock: 15,
       },
       {
@@ -418,6 +475,7 @@ const products = [
         color: "Black",
         sku: "ROAD-SHIRT-BLK-L",
         price: 1299,
+        oldPrice: 1999,
         stock: 10,
       },
       {
@@ -425,6 +483,7 @@ const products = [
         color: "White",
         sku: "ROAD-SHIRT-WHT-XL",
         price: 1399,
+        oldPrice: 2199,
         stock: 7,
       },
     ],
@@ -437,13 +496,16 @@ const products = [
     description: "Classic formal shirt for office and professional wear.",
     category: "Fashion",
     brand: "Peter England",
-    images: ["https://example.com/peter-england-shirt.jpg"],
+    images: [
+      "https://placehold.co/600x400/222222/FFFFFF/png?text=Peter+England+Formal+Shirt",
+    ],
     variants: [
       {
         size: "M",
         color: "White",
         sku: "PE-FORMAL-WHT-M",
         price: 1799,
+        oldPrice: 2499,
         stock: 12,
       },
       {
@@ -451,6 +513,7 @@ const products = [
         color: "Blue",
         sku: "PE-FORMAL-BLU-L",
         price: 1799,
+        oldPrice: 2499,
         stock: 9,
       },
       {
@@ -458,6 +521,7 @@ const products = [
         color: "Grey",
         sku: "PE-FORMAL-GRY-XL",
         price: 1899,
+        oldPrice: 2599,
         stock: 5,
       },
     ],
@@ -470,13 +534,16 @@ const products = [
     description: "Modern smart watch with fitness and notification tracking.",
     category: "Watches",
     brand: "MegaTech",
-    images: ["https://example.com/watch.jpg"],
+    images: [
+      "https://placehold.co/600x400/222222/FFFFFF/png?text=Smart+Watch+Pro",
+    ],
     variants: [
       {
         size: "Standard",
         color: "Black",
         sku: "WATCH-BLK-STD",
         price: 2999,
+        oldPrice: 3999,
         stock: 20,
       },
       {
@@ -484,6 +551,7 @@ const products = [
         color: "Blue",
         sku: "WATCH-BLU-STD",
         price: 3199,
+        oldPrice: 4199,
         stock: 15,
       },
     ],
@@ -496,13 +564,16 @@ const products = [
     description: "Advanced Apple smartwatch with health and fitness features.",
     category: "Watches",
     brand: "Apple",
-    images: ["https://example.com/apple-watch9.jpg"],
+    images: [
+      "https://placehold.co/600x400/222222/FFFFFF/png?text=Apple+Watch+Series+9",
+    ],
     variants: [
       {
         size: "41mm",
         color: "Black",
         sku: "AW9-BLK-41",
         price: 41999,
+        oldPrice: 46999,
         stock: 6,
       },
       {
@@ -510,6 +581,7 @@ const products = [
         color: "Silver",
         sku: "AW9-SLV-45",
         price: 45999,
+        oldPrice: 49999,
         stock: 4,
       },
     ],
@@ -522,13 +594,16 @@ const products = [
     description: "Samsung smartwatch with fitness tracking and AMOLED display.",
     category: "Watches",
     brand: "Samsung",
-    images: ["https://example.com/galaxy-watch6.jpg"],
+    images: [
+      "https://placehold.co/600x400/222222/FFFFFF/png?text=Samsung+Galaxy+Watch+6",
+    ],
     variants: [
       {
         size: "40mm",
         color: "Black",
         sku: "SGW6-BLK-40",
         price: 24999,
+        oldPrice: 29999,
         stock: 9,
       },
       {
@@ -536,6 +611,7 @@ const products = [
         color: "Silver",
         sku: "SGW6-SLV-44",
         price: 27999,
+        oldPrice: 32999,
         stock: 6,
       },
     ],
@@ -549,13 +625,16 @@ const products = [
       "Affordable smartwatch with a large display and fitness tracking.",
     category: "Watches",
     brand: "Noise",
-    images: ["https://example.com/noise-watch.jpg"],
+    images: [
+      "https://placehold.co/600x400/222222/FFFFFF/png?text=Noise+ColorFit+Ultra",
+    ],
     variants: [
       {
         size: "Standard",
         color: "Black",
         sku: "NOISE-BLK-STD",
         price: 2499,
+        oldPrice: 3499,
         stock: 25,
       },
       {
@@ -563,6 +642,7 @@ const products = [
         color: "Blue",
         sku: "NOISE-BLU-STD",
         price: 2499,
+        oldPrice: 3499,
         stock: 18,
       },
     ],
@@ -576,13 +656,16 @@ const products = [
       "Premium wireless headphones with advanced noise cancellation.",
     category: "Audio",
     brand: "Sony",
-    images: ["https://example.com/sony-xm5.jpg"],
+    images: [
+      "https://placehold.co/600x400/222222/FFFFFF/png?text=Sony+WH-1000XM5",
+    ],
     variants: [
       {
         size: "Standard",
         color: "Black",
         sku: "SONY-XM5-BLK",
         price: 29999,
+        oldPrice: 34999,
         stock: 7,
       },
       {
@@ -590,6 +673,7 @@ const products = [
         color: "Silver",
         sku: "SONY-XM5-SLV",
         price: 29999,
+        oldPrice: 34999,
         stock: 5,
       },
     ],
@@ -602,13 +686,16 @@ const products = [
     description: "Wireless earbuds with active noise cancellation.",
     category: "Audio",
     brand: "Apple",
-    images: ["https://example.com/airpods-pro2.jpg"],
+    images: [
+      "https://placehold.co/600x400/222222/FFFFFF/png?text=Apple+AirPods+Pro+2",
+    ],
     variants: [
       {
         size: "Standard",
         color: "White",
         sku: "AIRPODS-PRO2-WHT",
         price: 24999,
+        oldPrice: 29999,
         stock: 12,
       },
     ],
@@ -622,13 +709,16 @@ const products = [
       "Wireless headphones with noise cancellation and long battery life.",
     category: "Audio",
     brand: "JBL",
-    images: ["https://example.com/jbl-770nc.jpg"],
+    images: [
+      "https://placehold.co/600x400/222222/FFFFFF/png?text=JBL+Tune+770NC",
+    ],
     variants: [
       {
         size: "Standard",
         color: "Black",
         sku: "JBL770-BLK",
         price: 5999,
+        oldPrice: 7999,
         stock: 15,
       },
       {
@@ -636,6 +726,7 @@ const products = [
         color: "Blue",
         sku: "JBL770-BLU",
         price: 5999,
+        oldPrice: 7999,
         stock: 10,
       },
     ],
@@ -648,13 +739,16 @@ const products = [
     description: "Reliable laptop for work, study and everyday productivity.",
     category: "Laptops",
     brand: "Dell",
-    images: ["https://example.com/dell-inspiron.jpg"],
+    images: [
+      "https://placehold.co/600x400/222222/FFFFFF/png?text=Dell+Inspiron+15",
+    ],
     variants: [
       {
         size: "8GB/512GB",
         color: "Silver",
         sku: "DELL-I15-SLV-8",
         price: 54999,
+        oldPrice: 59999,
         stock: 7,
       },
       {
@@ -662,6 +756,7 @@ const products = [
         color: "Silver",
         sku: "DELL-I15-SLV-16",
         price: 62999,
+        oldPrice: 69999,
         stock: 5,
       },
     ],
@@ -674,13 +769,16 @@ const products = [
     description: "Slim and powerful laptop for work and entertainment.",
     category: "Laptops",
     brand: "HP",
-    images: ["https://example.com/hp-pavilion.jpg"],
+    images: [
+      "https://placehold.co/600x400/222222/FFFFFF/png?text=HP+Pavilion+14",
+    ],
     variants: [
       {
         size: "8GB/512GB",
         color: "Silver",
         sku: "HP-PAV14-SLV-8",
         price: 57999,
+        oldPrice: 62999,
         stock: 8,
       },
       {
@@ -688,6 +786,7 @@ const products = [
         color: "Blue",
         sku: "HP-PAV14-BLU-16",
         price: 64999,
+        oldPrice: 70999,
         stock: 4,
       },
     ],
@@ -701,13 +800,16 @@ const products = [
       "Slim laptop designed for productivity and everyday computing.",
     category: "Laptops",
     brand: "Lenovo",
-    images: ["https://example.com/lenovo-ideapad.jpg"],
+    images: [
+      "https://placehold.co/600x400/222222/FFFFFF/png?text=Lenovo+IdeaPad+Slim+5",
+    ],
     variants: [
       {
         size: "8GB/512GB",
         color: "Grey",
         sku: "LEN-SLIM5-GRY-8",
         price: 52999,
+        oldPrice: 58999,
         stock: 10,
       },
       {
@@ -715,6 +817,7 @@ const products = [
         color: "Grey",
         sku: "LEN-SLIM5-GRY-16",
         price: 59999,
+        oldPrice: 65999,
         stock: 6,
       },
     ],
@@ -727,13 +830,16 @@ const products = [
     description: "Premium wireless mouse designed for productivity.",
     category: "Accessories",
     brand: "Logitech",
-    images: ["https://example.com/mx-master-3s.jpg"],
+    images: [
+      "https://placehold.co/600x400/222222/FFFFFF/png?text=Logitech+MX+Master+3S",
+    ],
     variants: [
       {
         size: "Standard",
         color: "Black",
         sku: "LOG-MX3S-BLK",
         price: 8999,
+        oldPrice: 10999,
         stock: 15,
       },
       {
@@ -741,6 +847,7 @@ const products = [
         color: "White",
         sku: "LOG-MX3S-WHT",
         price: 8999,
+        oldPrice: 10999,
         stock: 8,
       },
     ],
@@ -754,13 +861,16 @@ const products = [
       "Compact wireless mechanical keyboard for developers and professionals.",
     category: "Accessories",
     brand: "Keychron",
-    images: ["https://example.com/keychron-k2.jpg"],
+    images: [
+      "https://placehold.co/600x400/222222/FFFFFF/png?text=Keychron+K2+Mechanical+Keyboard",
+    ],
     variants: [
       {
         size: "75%",
         color: "Black",
         sku: "KEY-K2-BLK-75",
         price: 7999,
+        oldPrice: 9999,
         stock: 10,
       },
       {
@@ -768,6 +878,7 @@ const products = [
         color: "White",
         sku: "KEY-K2-WHT-75",
         price: 7999,
+        oldPrice: 9999,
         stock: 6,
       },
     ],
@@ -781,13 +892,16 @@ const products = [
       "4K smart television with vivid picture quality and smart features.",
     category: "Television",
     brand: "Sony",
-    images: ["https://example.com/sony-bravia.jpg"],
+    images: [
+      "https://placehold.co/600x400/222222/FFFFFF/png?text=Sony+Bravia+55+4K+TV",
+    ],
     variants: [
       {
         size: "55 inch",
         color: "Black",
         sku: "SONY-TV-55-BLK",
         price: 69999,
+        oldPrice: 79999,
         stock: 5,
       },
       {
@@ -795,6 +909,7 @@ const products = [
         color: "Black",
         sku: "SONY-TV-65-BLK",
         price: 89999,
+        oldPrice: 104999,
         stock: 3,
       },
     ],
@@ -808,13 +923,16 @@ const products = [
       "Samsung 4K smart television with modern design and smart features.",
     category: "Television",
     brand: "Samsung",
-    images: ["https://example.com/samsung-tv.jpg"],
+    images: [
+      "https://placehold.co/600x400/222222/FFFFFF/png?text=Samsung+55+4K+Smart+TV",
+    ],
     variants: [
       {
         size: "55 inch",
         color: "Black",
         sku: "SAM-TV-55-BLK",
         price: 59999,
+        oldPrice: 69999,
         stock: 7,
       },
       {
@@ -822,6 +940,7 @@ const products = [
         color: "Black",
         sku: "SAM-TV-65-BLK",
         price: 79999,
+        oldPrice: 89999,
         stock: 4,
       },
     ],
