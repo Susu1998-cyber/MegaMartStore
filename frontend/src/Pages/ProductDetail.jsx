@@ -1,15 +1,10 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import {
-  ShoppingCart,
-  Minus,
-  Plus,
-  ArrowLeft,
-} from "lucide-react";
+import { ShoppingCart, Minus, Plus, ArrowLeft } from "lucide-react";
 import { useDispatch } from "react-redux";
 
 import { getProduct } from "../services/api";
-import { addItem } from "../Redux/cartSlice";
+import { addItem } from "../Redux/CartSlice";
 import Loader from "../Components/Loader";
 
 const fallbackImage =
@@ -21,8 +16,7 @@ const ProductDetail = () => {
   const dispatch = useDispatch();
 
   const [product, setProduct] = useState(null);
-  const [selectedVariant, setSelectedVariant] =
-    useState(null);
+  const [selectedVariant, setSelectedVariant] = useState(null);
 
   const [quantity, setQuantity] = useState(1);
   const [loading, setLoading] = useState(true);
@@ -39,15 +33,10 @@ const ProductDetail = () => {
         setProduct(response.data);
 
         if (response.data?.variants?.length) {
-          setSelectedVariant(
-            response.data.variants[0]
-          );
+          setSelectedVariant(response.data.variants[0]);
         }
       } catch (err) {
-        setError(
-          err.response?.data?.message ||
-            "Product not found"
-        );
+        setError(err.response?.data?.message || "Product not found");
       } finally {
         setLoading(false);
       }
@@ -72,7 +61,7 @@ const ProductDetail = () => {
           productId: product._id,
           variantId: selectedVariant._id,
           quantity,
-        })
+        }),
       ).unwrap();
 
       navigate("/cart");
@@ -90,15 +79,12 @@ const ProductDetail = () => {
   if (error || !product) {
     return (
       <div className="mx-auto max-w-7xl px-4 py-20 text-center">
-        <p className="text-red-500">
-          {error || "Product not found"}
-        </p>
+        <p className="text-red-500">{error || "Product not found"}</p>
       </div>
     );
   }
 
-  const image =
-    product.images?.[0] || fallbackImage;
+  const image = product.images?.[0] || fallbackImage;
 
   const maxStock = selectedVariant?.stock || 0;
 
@@ -132,23 +118,17 @@ const ProductDetail = () => {
             {product.name}
           </h1>
 
-          <p className="mt-4 leading-7 text-gray-500">
-            {product.description}
-          </p>
+          <p className="mt-4 leading-7 text-gray-500">{product.description}</p>
 
           <div className="mt-6">
             <span className="text-3xl font-bold">
-              ₹
-              {selectedVariant?.price?.toLocaleString() ||
-                0}
+              ₹{selectedVariant?.price?.toLocaleString() || 0}
             </span>
           </div>
 
           {/* Variants */}
           <div className="mt-8">
-            <h3 className="text-sm font-semibold">
-              Select Variant
-            </h3>
+            <h3 className="text-sm font-semibold">Select Variant</h3>
 
             <div className="mt-3 flex flex-wrap gap-3">
               {product.variants.map((variant) => (
@@ -159,15 +139,12 @@ const ProductDetail = () => {
                     setQuantity(1);
                   }}
                   className={`rounded-lg border px-4 py-3 text-sm ${
-                    selectedVariant?._id ===
-                    variant._id
+                    selectedVariant?._id === variant._id
                       ? "border-cyan-600 bg-cyan-50 text-cyan-700"
                       : "border-gray-200"
                   }`}
                 >
-                  <span>
-                    {variant.size || "Standard"}
-                  </span>
+                  <span>{variant.size || "Standard"}</span>
 
                   {variant.color && (
                     <span className="ml-2 text-gray-500">
@@ -186,43 +163,28 @@ const ProductDetail = () => {
                 ✓ {maxStock} items available
               </p>
             ) : (
-              <p className="text-sm font-medium text-red-500">
-                Out of stock
-              </p>
+              <p className="text-sm font-medium text-red-500">Out of stock</p>
             )}
           </div>
 
           {/* Quantity */}
           <div className="mt-6 flex items-center gap-4">
-            <span className="text-sm font-medium">
-              Quantity
-            </span>
+            <span className="text-sm font-medium">Quantity</span>
 
             <div className="flex items-center rounded-lg border">
               <button
                 disabled={quantity <= 1}
-                onClick={() =>
-                  setQuantity((q) => Math.max(1, q - 1))
-                }
+                onClick={() => setQuantity((q) => Math.max(1, q - 1))}
                 className="p-3 disabled:opacity-30"
               >
                 <Minus size={16} />
               </button>
 
-              <span className="min-w-10 text-center">
-                {quantity}
-              </span>
+              <span className="min-w-10 text-center">{quantity}</span>
 
               <button
-                disabled={
-                  quantity >= maxStock ||
-                  maxStock === 0
-                }
-                onClick={() =>
-                  setQuantity((q) =>
-                    Math.min(maxStock, q + 1)
-                  )
-                }
+                disabled={quantity >= maxStock || maxStock === 0}
+                onClick={() => setQuantity((q) => Math.min(maxStock, q + 1))}
                 className="p-3 disabled:opacity-30"
               >
                 <Plus size={16} />
@@ -232,11 +194,7 @@ const ProductDetail = () => {
 
           {/* Add Cart */}
           <button
-            disabled={
-              adding ||
-              !selectedVariant ||
-              maxStock === 0
-            }
+            disabled={adding || !selectedVariant || maxStock === 0}
             onClick={handleAddToCart}
             className="mt-8 flex w-full items-center justify-center gap-2 rounded-xl bg-cyan-600 px-6 py-4 font-semibold text-white transition hover:bg-cyan-700 disabled:cursor-not-allowed disabled:bg-gray-300"
           >
@@ -245,8 +203,8 @@ const ProductDetail = () => {
             {adding
               ? "Adding..."
               : maxStock === 0
-              ? "Out of Stock"
-              : "Add to Cart"}
+                ? "Out of Stock"
+                : "Add to Cart"}
           </button>
         </div>
       </div>
