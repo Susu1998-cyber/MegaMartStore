@@ -198,22 +198,13 @@ const Register = () => {
 
       const response = await registerUser(form);
 
-      localStorage.setItem(
-        "token",
-        response.token
-      );
+      localStorage.setItem("token", response.token);
 
-      localStorage.setItem(
-        "user",
-        JSON.stringify(response.user)
-      );
+      localStorage.setItem("user", JSON.stringify(response.user));
 
-      navigate("/products");
+      navigate("/login");
     } catch (err) {
-      setError(
-        err.response?.data?.message ||
-          "Registration failed"
-      );
+      setError(err.response?.data?.message || "Registration failed");
     } finally {
       setLoading(false);
     }
@@ -223,13 +214,9 @@ const Register = () => {
     <div className="flex min-h-[75vh] items-center justify-center bg-gray-50 px-4 py-10">
       <div className="w-full max-w-md rounded-2xl bg-white p-8 shadow-sm">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-cyan-600">
-            MegaMart
-          </h1>
+          <h1 className="text-2xl font-bold text-cyan-600">MegaMart</h1>
 
-          <h2 className="mt-4 text-xl font-bold">
-            Create Account
-          </h2>
+          <h2 className="mt-4 text-xl font-bold">Create Account</h2>
 
           <p className="mt-1 text-sm text-gray-500">
             Create your MegaMart account.
@@ -242,14 +229,9 @@ const Register = () => {
           </div>
         )}
 
-        <form
-          onSubmit={handleSubmit}
-          className="mt-7 space-y-5"
-        >
+        <form onSubmit={handleSubmit} className="mt-7 space-y-5">
           <div>
-            <label className="mb-2 block text-sm font-medium">
-              Name
-            </label>
+            <label className="mb-2 block text-sm font-medium">Name</label>
 
             <input
               required
@@ -266,9 +248,7 @@ const Register = () => {
           </div>
 
           <div>
-            <label className="mb-2 block text-sm font-medium">
-              Email
-            </label>
+            <label className="mb-2 block text-sm font-medium">Email</label>
 
             <input
               type="email"
@@ -286,9 +266,7 @@ const Register = () => {
           </div>
 
           <div>
-            <label className="mb-2 block text-sm font-medium">
-              Password
-            </label>
+            <label className="mb-2 block text-sm font-medium">Password</label>
 
             <input
               type="password"
@@ -310,18 +288,13 @@ const Register = () => {
             disabled={loading}
             className="w-full rounded-lg bg-cyan-600 py-3 font-semibold text-white hover:bg-cyan-700 disabled:bg-gray-300"
           >
-            {loading
-              ? "Creating..."
-              : "Create Account"}
+            {loading ? "Creating..." : "Create Account"}
           </button>
         </form>
 
         <p className="mt-6 text-center text-sm text-gray-500">
           Already have an account?{" "}
-          <Link
-            to="/login"
-            className="font-semibold text-cyan-600"
-          >
+          <Link to="/login" className="font-semibold text-cyan-600">
             Login
           </Link>
         </p>

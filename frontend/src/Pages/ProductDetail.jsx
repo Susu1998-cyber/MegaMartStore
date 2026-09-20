@@ -9,7 +9,7 @@ import {
 import { useDispatch } from "react-redux";
 
 import { getProduct } from "../services/api";
-import { addItem } from "../Redux/CartSlice";
+import { addItem } from "../Redux/cartSlice";
 import Loader from "../Components/Loader";
 
 const fallbackImage =

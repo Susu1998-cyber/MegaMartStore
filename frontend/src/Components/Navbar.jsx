@@ -3,7 +3,7 @@ import {
   Search,
   ShoppingCart,
   UserRound,
-  Menu,
+  // Menu,
   ChevronDown,
 } from "lucide-react";
 
@@ -19,6 +19,18 @@ const Navbar = () => {
     navigate("/login");
   };
 
+  const handleSearch = (e) => {
+    if (e.key !== "Enter") return;
+
+    const value = e.target.value.trim();
+
+    if (!value) {
+      navigate("/products");
+      return;
+    }
+
+    navigate(`/products?q=${encodeURIComponent(value)}`);
+  };
   return (
     <>
       {/* Top Bar */}
@@ -35,10 +47,39 @@ const Navbar = () => {
       </div>
 
       {/* Main Navbar */}
-      <header className="border-b bg-white">
+      <header className="border-b border-gray-100 bg-white">
         <div className="mx-auto flex max-w-7xl items-center gap-4 px-4 py-4">
-          <button className="md:hidden">
-            <Menu size={22} />
+          <button>
+            {/* <Menu size={22} />
+             */}
+            <button className="flex items-center gap-1 rounded-lg bg-gray-100 px-3 py-2 text-sm font-medium text-gray-700 hover:bg-cyan-50 hover:text-cyan-600">
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M3 6H21"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                />
+                <path
+                  d="M3 12H17"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                />
+                <path
+                  d="M3 18H13"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </button>
           </button>
 
           <Link to="/" className="text-xl font-bold text-cyan-600 md:text-2xl">
@@ -48,19 +89,13 @@ const Navbar = () => {
           {/* Search */}
           <div className="hidden flex-1 md:block">
             <div className="mx-auto flex max-w-xl items-center rounded-md bg-gray-100 px-4">
-              <Search size={18} className="text-gray-400" />
+              <Search size={18} className="text-blue-400" />
 
               <input
                 type="text"
                 placeholder="Search smart phones, groceries and more..."
                 className="w-full bg-transparent px-3 py-3 text-sm outline-none"
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" && e.target.value) {
-                    navigate(
-                      `/products?q=${encodeURIComponent(e.target.value)}`,
-                    );
-                  }
-                }}
+                onKeyDown={handleSearch}
               />
             </div>
           </div>
@@ -71,7 +106,7 @@ const Navbar = () => {
                 onClick={logout}
                 className="hidden items-center gap-1 text-sm md:flex"
               >
-                <UserRound size={18} />
+                <UserRound size={18} className="text-blue-400" />
                 Logout
               </button>
             ) : (
@@ -79,7 +114,7 @@ const Navbar = () => {
                 to="/login"
                 className="hidden items-center gap-1 text-sm md:flex"
               >
-                <UserRound size={18} />
+                <UserRound size={18} className="text-blue-400" />
                 Sign In
               </Link>
             )}
@@ -88,7 +123,7 @@ const Navbar = () => {
               to="/cart"
               className="relative flex items-center gap-1 text-sm"
             >
-              <ShoppingCart size={20} />
+              <ShoppingCart size={20} className="text-blue-400" />
               <span className="hidden md:block">Cart</span>
             </Link>
           </div>
@@ -102,18 +137,14 @@ const Navbar = () => {
             <input
               placeholder="Search products..."
               className="w-full bg-transparent px-3 py-2 text-sm outline-none"
-              onKeyDown={(e) => {
-                if (e.key === "Enter" && e.target.value) {
-                  navigate(`/products?q=${encodeURIComponent(e.target.value)}`);
-                }
-              }}
+              onKeyDown={handleSearch}
             />
           </div>
         </div>
       </header>
 
       {/* Categories */}
-      <nav className="hidden border-b bg-white md:block">
+      <nav className="hidden border-b border-gray-100  bg-white md:block">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-2 overflow-x-auto px-4 py-3">
           {[
             "Grocery",

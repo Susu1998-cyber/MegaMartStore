@@ -33,15 +33,22 @@ const Cart = () => {
       const variant = item.product?.variants?.find(
         (v) => String(v._id) === String(item.variantId),
       );
-      console.log("CART ITEM:", item);
-      console.log("PRODUCT:", item.product);
-      console.log("CART VARIANT ID:", item.variantId);
-      console.log("PRODUCT VARIANTS:", item.product?.variants);
-      console.log("FOUND VARIANT:", variant);
-      console.log("STOCK:", variant?.stock);
+
       return sum + (variant?.price || 0) * item.quantity;
     }, 0);
   }, [items]);
+
+  const hasStockIssue = items.some((item) => {
+    const variant = item.product?.variants?.find(
+      (v) => String(v._id) === String(item.variantId),
+    );
+
+    if (!variant) {
+      return true;
+    }
+
+    return variant.stock < item.quantity;
+  });
 
   const handleCheckout = async () => {
     try {
@@ -223,11 +230,15 @@ const Cart = () => {
             </div>
 
             <button
-              disabled={ordering}
+              disabled={ordering || hasStockIssue}
               onClick={handleCheckout}
               className="mt-7 w-full rounded-xl bg-cyan-600 py-3 font-semibold text-white hover:bg-cyan-700 disabled:bg-gray-300"
             >
-              {ordering ? "Processing..." : "Checkout"}
+              {ordering
+                ? "Processing..."
+                : hasStockIssue
+                  ? "Update Cart Before Checkout"
+                  : "Checkout"}
             </button>
           </div>
         </div>
