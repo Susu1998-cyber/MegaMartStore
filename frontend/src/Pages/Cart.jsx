@@ -16,7 +16,7 @@ const Cart = () => {
   const [ordering, setOrdering] = useState(false);
   const [orderError, setOrderError] = useState("");
 
-  useEffect(() => {
+  useEffect(() => { 
     if (!localStorage.getItem("token")) {
       navigate("/login");
       return;

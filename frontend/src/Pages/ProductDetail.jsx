@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { ShoppingCart, Minus, Plus, ArrowLeft } from "lucide-react";
 import { useDispatch } from "react-redux";
-
 import { getProduct } from "../services/api";
 import { addItem } from "../Redux/CartSlice";
 import Loader from "../Components/Loader";
