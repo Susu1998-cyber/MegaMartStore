@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { Link ,useLocation } from "react-router-dom";
-import { ArrowRight,ArrowLeft } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
+import { ArrowRight, ArrowLeft } from "lucide-react";
 import { getProducts } from "../services/api";
 import ProductFilters from "../Components/ProductFilters";
 import ProductCard from "../Components/ProductCard";
@@ -148,25 +148,25 @@ const ProductList = () => {
           <div className="mt-2 h-1 w-full rounded-full bg-cyan-600" />
         </div>
 
-    <div className="flex items-center gap-4">
-  {location.pathname !== "/" && (
-    <Link
-      to="/"
-      className="flex items-center gap-1 text-sm text-gray-500 hover:text-cyan-600"
-    >
-      <ArrowLeft size={15} />
-      Back
-    </Link>
-  )}
+        <div className="flex items-center gap-4">
+          {location.pathname !== "/" && (
+            <Link
+              to="/"
+              className="flex items-center gap-1 text-sm text-gray-500 hover:text-cyan-600"
+            >
+              <ArrowLeft size={15} />
+              Back
+            </Link>
+          )}
 
-  <Link
-    to="/products"
-    className="flex items-center gap-1 text-sm text-gray-500 hover:text-cyan-600"
-  >
-    View All
-    <ArrowRight size={15} />
-  </Link>
-</div>
+          <Link
+            to="/products"
+            className="flex items-center gap-1 text-sm text-gray-500 hover:text-cyan-600"
+          >
+            View All
+            <ArrowRight size={15} />
+          </Link>
+        </div>
       </div>
 
       {/* Loading */}

@@ -42,13 +42,13 @@ const Footer = () => {
             {/* App Buttons */}
             <div className="mt-1.5 flex items-center gap-2">
               <img
-                src="/images/Appstore.png"
+                src="./assets/images/Appstore.png"
                 alt="Download on App Store"
                 className="h-7 w-auto"
               />
 
               <img
-                src="/images/App.png"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzuhgmk0pR2xFv1y5DqVVE4ydxOdxOYOwuuv6FJm575A&s=10 "
                 alt="Get it on Google Play"
                 className="h-7 w-auto"
               />

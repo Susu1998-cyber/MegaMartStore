@@ -8,7 +8,7 @@ const QuantityControl = ({
 }) => {
   return (
     <div className="flex w-fit items-center overflow-hidden rounded-lg border">
-      <button
+      <button 
         disabled={disabled || quantity <= 1}
         onClick={onDecrease}
         className="p-2 hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-40"
