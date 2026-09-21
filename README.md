@@ -353,7 +353,7 @@ Create a `.env` file inside `server/`:
 ```env
 PORT=5000
 
-MONGO_URI=mongodb+srv://USERNAME:PASSWORD@CLUSTER.mongodb.net/megamart
+MONGO_URI=mongodb+srv://susanthsankar1998_db_user:Ej7zeX3tHXjHiIaf@cluster0.etwegel.mongodb.net/mega-mart
 
 JWT_SECRET=your_long_random_secret
 JWT_EXPIRES_IN=1d
