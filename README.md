@@ -499,58 +499,7 @@ The backend:
 8. Rolls everything back if any step fails.
 
 This protects the database from negative stock and prevents partial checkout updates.
-
-## Testing Scenarios
-
-At minimum, the important scenarios to verify are:
-
-### Test 1 — Order flow
-
-```text
-Register/Login
-   ↓
-Add product to cart
-   ↓
-Open cart
-   ↓
-Checkout
-   ↓
-Order is created
-   ↓
-Cart is cleared
-   ↓
-Stock is reduced
-```
-
-### Test 2 — Overselling / concurrent checkout
-
-```text
-Initial stock = 1
-
-User A cart = 1
-User B cart = 1
-
-User A checkout → succeeds
-User B checkout → rejected
-
-Final stock = 0
-Total orders for the unit = 1
-```
-
-Also verify the stale-cart case:
-
-```text
-User B has an item in cart
-        ↓
-User A buys the remaining stock
-        ↓
-User B refreshes cart
-        ↓
-Out-of-stock / quantity warning appears
-        ↓
-Checkout is rejected if the cart is still stale
-```
-
+ 
 ## Error Handling
 
 The API uses appropriate error responses for common conditions such as:
