@@ -220,7 +220,7 @@ const Home = () => {
           {brands.map((brand) => (
             <Link
               key={brand.name}
-              to="/products?category=Electronics"
+              // to="/products?category=Electronics"
               className={`${brand.color} flex min-h-32 items-center justify-between overflow-hidden rounded-xl p-5`}
             >
               <div>
