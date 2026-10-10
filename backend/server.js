@@ -19,6 +19,14 @@ app.use(cors());
 
 app.use(express.json());
 
+app.get("/", (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: "Mega Mart API is running",
+  });
+});
+
+
 // API Routes
 // =========================
 
@@ -33,6 +41,8 @@ app.use("/api/orders", orderRoutes);
 // =========================
 // 404 Handler
 // =========================
+
+ 
 
 app.use((req, res) => {
   res.status(404).json({
