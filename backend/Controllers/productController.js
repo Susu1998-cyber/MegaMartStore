@@ -26,7 +26,7 @@ const getProducts = async (req, res) => {
         $search: q,
       };
     }
-
+    
     // Price filter
     if (minPrice || maxPrice) {
       filter["variants.price"] = {};
@@ -42,6 +42,10 @@ const getProducts = async (req, res) => {
 
     // Sorting
     let sortOption = { createdAt: -1 };
+
+    if (sort === "newest") {
+      sortOption = { createdAt: -1 };
+    }
 
     if (sort === "price_asc") {
       sortOption = { "variants.price": 1 };
