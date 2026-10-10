@@ -29,6 +29,19 @@ const ProductFilters = ({ filters, setFilters }) => {
     }));
   };
 
+  if (
+    filters.minPrice &&
+    filters.maxPrice &&
+    Number(filters.minPrice) > Number(filters.maxPrice)
+  ) {
+    return (
+      <div className="mb-8 rounded-xl border bg-white p-4 shadow-sm">
+        <p className="text-red-500">
+          Minimum price cannot be greater than maximum price.
+        </p>
+      </div>
+    );
+  }
   return (
     <div className="mb-8 rounded-xl border bg-white p-4 shadow-sm">
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -97,6 +110,7 @@ const ProductFilters = ({ filters, setFilters }) => {
             className="w-full rounded-lg border border-gray-200 px-3 py-2.5 text-sm outline-none focus:border-cyan-500"
           >
             <option value="">Latest</option>
+            <option value="newest">Newest</option>
 
             <option value="price_asc">Price: Low to High</option>
 

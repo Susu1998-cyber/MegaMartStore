@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
 import { loginUser } from "../services/api";
 
 const Login = () => {
@@ -10,7 +9,7 @@ const Login = () => {
     email: "",
     password: "",
   });
-
+  const [showingPassword, setShowingPassword] = useState(false);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -33,6 +32,10 @@ const Login = () => {
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleShowPasswordToggle = () => {
+    setShowingPassword((prev) => !prev);
   };
 
   return (
@@ -77,7 +80,7 @@ const Login = () => {
             <label className="mb-2 block text-sm font-medium">Password</label>
 
             <input
-              type="password"
+              type={showingPassword ? "text" : "password"}
               required
               value={form.password}
               onChange={(e) =>
@@ -89,6 +92,13 @@ const Login = () => {
               className="w-full rounded-lg border px-4 py-3 outline-none focus:border-cyan-500"
               placeholder="••••••••"
             />
+            <button
+              type="button"
+              onClick={handleShowPasswordToggle}
+              className="mt-2 text-sm text-cyan-600 hover:underline"
+            >
+              {showingPassword ? "Hide Password" : "Show Password"}
+            </button>
           </div>
 
           <button

@@ -8,9 +8,14 @@ import {
   ChevronDown,
 } from "lucide-react";
 import { useState } from "react";
+import { useSelector } from "react-redux";
+// import { useDispatch } from "react-redux";
+// import { fetchCart } from "../Redux/CartSlice";
 
 const Navbar = () => {
   const navigate = useNavigate();
+
+  // const dispatch = useDispatch();
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -36,6 +41,12 @@ const Navbar = () => {
 
     navigate(`/products?q=${encodeURIComponent(value)}`);
   };
+  const { items } = useSelector((state) => state.cart);
+
+  const cartItemCount = items.reduce((total, item) => total + item.quantity, 0);
+
+  console.log("Redux cart items:", items);
+  console.log("Cart Item Count:", cartItemCount);
 
   return (
     <>
@@ -170,11 +181,17 @@ const Navbar = () => {
             {/* Cart */}
             <Link
               to="/cart"
-              onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center gap-3 rounded-lg px-3 py-3 text-sm font-medium text-gray-700 hover:bg-cyan-50 hover:text-cyan-600"
+              className="relative flex items-center gap-1 text-sm"
             >
-              <ShoppingCart size={18} />
-              Cart
+              <ShoppingCart size={20} className="text-blue-400" />
+
+              <span className="hidden md:block">Cart</span>
+
+              {cartItemCount > 0 && (
+                <span className="absolute -right-3 -top-3 flex h-5 min-w-5 items-center justify-center rounded-full bg-red-500 px-1 text-xs font-semibold text-white">
+                  {cartItemCount}
+                </span>
+              )}
             </Link>
 
             {/* Login / Logout */}

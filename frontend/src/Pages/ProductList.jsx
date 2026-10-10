@@ -133,10 +133,38 @@ const ProductList = () => {
     setSearchParams(params);
   };
 
+  const hasPreviousPage = page > 1;
+
+  const hasNextPage = pagination.totalPages && page < pagination.totalPages;
+
+  // const clearFilters = () => {
+  //   setSearchParams((prev) => {
+  //     const params = new URLSearchParams(prev);
+
+  //     params.delete("q");
+  //     params.delete("category");
+  //     params.delete("minPrice");
+  //     params.delete("maxPrice");
+  //     params.delete("sort");
+  //     params.delete("page");
+
+  //     return params;
+  //   });
+  // };
+
   return (
     <main className="mx-auto min-h-screen max-w-7xl px-4 py-8">
       {/* FILTERS */}
-      <ProductFilters filters={filters} setFilters={setFilters} />
+      {error && (
+        <div className="mb-8 rounded-xl border bg-white p-4 shadow-sm">
+          <p className="text-red-500">{error}</p>
+        </div>
+      )}
+      <ProductFilters
+        filters={filters}
+        setFilters={setFilters}
+        // clearFilters={clearFilters}
+      />
       <div className="mb-5 flex items-end justify-between">
         <div className="inline-block">
           <h2 className="text-lg font-semibold">
@@ -222,6 +250,24 @@ const ProductList = () => {
               ))}
             </div>
           )}
+
+          <button
+            disabled={!hasPreviousPage}
+            onClick={() => changePage(page - 1)}
+            className="flex items-center gap-2 rounded-lg border bg-white px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-30"
+          >
+            <ArrowLeft size={15} />
+            Previous
+          </button>
+
+          <button
+            disabled={!hasNextPage}
+            onClick={() => changePage(page + 1)}
+            className="ml-2 flex items-center gap-2 rounded-lg border bg-white px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-30"
+          >
+            <ArrowRight size={15} />
+            Next
+          </button>
         </>
       )}
     </main>

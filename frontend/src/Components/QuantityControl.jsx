@@ -1,11 +1,14 @@
 import { Minus, Plus } from "lucide-react";
-
+ 
 const QuantityControl = ({
   quantity,
   onDecrease,
   onIncrease,
   disabled = false,
 }) => {
+
+
+  
   return (
     <div className="flex w-fit items-center overflow-hidden rounded-lg border">
       <button 

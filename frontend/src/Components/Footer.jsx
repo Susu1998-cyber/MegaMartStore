@@ -48,7 +48,7 @@ const Footer = () => {
               />
 
               <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzuhgmk0pR2xFv1y5DqVVE4ydxOdxOYOwuuv6FJm575A&s=10 "
+                src="./assets/images/Playstore.png"
                 alt="Get it on Google Play"
                 className="h-7 w-auto"
               />

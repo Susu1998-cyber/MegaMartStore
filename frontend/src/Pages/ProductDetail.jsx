@@ -86,6 +86,17 @@ const ProductDetail = () => {
 
   const maxStock = selectedVariant?.stock || 0;
 
+  const handleIncreaseQuantity = () => {
+    if (quantity < maxStock) {
+      setQuantity((prev) => prev + 1);
+    }
+  };
+
+  const handleDecreaseQuantity = () => {
+    if (quantity > 1) {
+      setQuantity((prev) => prev - 1);
+    }}
+
   return (
     <main className="mx-auto max-w-7xl px-4 py-8">
       <button
@@ -172,7 +183,8 @@ const ProductDetail = () => {
             <div className="flex items-center rounded-lg border">
               <button
                 disabled={quantity <= 1}
-                onClick={() => setQuantity((q) => Math.max(1, q - 1))}
+                // onClick={() => setQuantity((q) => Math.max(1, q - 1))}
+                onClick={handleDecreaseQuantity}
                 className="p-3 disabled:opacity-30"
               >
                 <Minus size={16} />
@@ -182,7 +194,8 @@ const ProductDetail = () => {
 
               <button
                 disabled={quantity >= maxStock || maxStock === 0}
-                onClick={() => setQuantity((q) => Math.min(maxStock, q + 1))}
+                // onClick={() => setQuantity((q) => Math.min(maxStock, q + 1))}
+                onClick={handleIncreaseQuantity}
                 className="p-3 disabled:opacity-30"
               >
                 <Plus size={16} />

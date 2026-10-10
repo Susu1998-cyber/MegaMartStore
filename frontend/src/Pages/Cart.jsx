@@ -44,8 +44,10 @@ const Cart = () => {
       return true;
     }
 
-    return variant.stock < item.quantity;
+    return variant.stock < item.quantity;  
   });
+
+ 
 
   const handleCheckout = async () => {
     try {
@@ -67,6 +69,12 @@ const Cart = () => {
     } finally {
       setOrdering(false);
     }
+  };
+
+  const handleRemoveItem = (itemId) => {
+    dispatch(removeItem(itemId));
+
+    alert("Item removed from cart");
   };
 
   if (loading && items.length === 0) {
@@ -164,7 +172,12 @@ const Cart = () => {
                         </div>
 
                         <button
-                          onClick={() => dispatch(removeItem(item._id))}
+                          onClick={() =>
+                            dispatch(
+                              removeItem(item._id),
+                              handleRemoveItem(item._id),
+                            )
+                          }
                           className="text-gray-400 hover:text-red-500"
                         >
                           <Trash2 size={18} />

@@ -6,6 +6,8 @@ const fallbackImage =
 const ProductCard = ({ product }) => {
   const firstVariant = product.variants?.[0];
 
+  console.log("ProductCard - Product:", firstVariant);
+
   const price = firstVariant?.price || 0;
   const oldPrice = firstVariant?.oldPrice || 0;
 
