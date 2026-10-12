@@ -133,9 +133,9 @@ const ProductList = () => {
     setSearchParams(params);
   };
 
-  const hasPreviousPage = page > 1;
+  // const hasPreviousPage = page > 1;
 
-  const hasNextPage = pagination.totalPages && page < pagination.totalPages;
+  // const hasNextPage = pagination.totalPages && page < pagination.totalPages;
 
   // const clearFilters = () => {
   //   setSearchParams((prev) => {
@@ -251,7 +251,7 @@ const ProductList = () => {
             </div>
           )}
 
-          <button
+          {/* <button
             disabled={!hasPreviousPage}
             onClick={() => changePage(page - 1)}
             className="flex items-center gap-2 rounded-lg border bg-white px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-30"
@@ -267,7 +267,7 @@ const ProductList = () => {
           >
             <ArrowRight size={15} />
             Next
-          </button>
+          </button> */}
         </>
       )}
     </main>
