@@ -1,7 +1,9 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://mega-mart-store-qvm4.vercel.app/api",
+  // baseURL: "https://mega-mart-store-qvm4.vercel.app/api",
+  baseURL: "http://localhost:5000/api",
+
   headers: {
     "Content-Type": "application/json",
   },
@@ -71,6 +73,20 @@ export const deleteCartItem = async (id) => {
 
 export const createOrder = async () => {
   const response = await api.post("/orders");
+
+  return response.data;
+};
+
+export const createPayment = async (orderId) => {
+  const response = await api.post("/payment/create-order", {
+    orderId,
+  });
+
+  return response.data;
+};
+
+export const verifyPayment = async (paymentData) => {
+  const response = await api.post("/payment/verify-payment", paymentData);
 
   return response.data;
 };

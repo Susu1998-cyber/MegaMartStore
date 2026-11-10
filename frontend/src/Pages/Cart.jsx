@@ -3,9 +3,31 @@ import { useDispatch, useSelector } from "react-redux";
 import { Trash2, ShoppingBag, ArrowLeft } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { fetchCart, updateItem, removeItem } from "../Redux/CartSlice";
-import { createOrder } from "../services/api";
 import QuantityControl from "../Components/QuantityControl";
 import Loader from "../Components/Loader";
+import { createOrder, createPayment, verifyPayment } from "../services/api";
+
+const loadRazorpayScript = () => {
+  return new Promise((resolve) => {
+    const existingScript = document.querySelector(
+      'script[src="https://checkout.razorpay.com/v1/checkout.js"]',
+    );
+
+    if (existingScript) {
+      resolve(true);
+      return;
+    }
+
+    const script = document.createElement("script");
+
+    script.src = "https://checkout.razorpay.com/v1/checkout.js";
+
+    script.onload = () => resolve(true);
+    script.onerror = () => resolve(false);
+
+    document.body.appendChild(script);
+  });
+};
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -44,29 +66,136 @@ const Cart = () => {
       return true;
     }
 
-    return variant.stock < item.quantity;  
+    return variant.stock < item.quantity;
   });
 
- 
+  // const handleCheckout = async () => {
+  //   try {
+  //     setOrdering(true);
+  //     setOrderError("");
+
+  //     const response = await createOrder();
+
+  //     alert(`Order ${response.data._id} created successfully`);
+
+  //     dispatch(fetchCart());
+  //   } catch (err) {
+  //     setOrderError(
+  //       err.response?.data?.message || "Checkout failed. Please try again.",
+  //     );
+
+  //     // Refresh cart because stock may have changed
+  //     dispatch(fetchCart());
+  //   } finally {
+  //     setOrdering(false);
+  //   }
+  // };
 
   const handleCheckout = async () => {
     try {
       setOrdering(true);
       setOrderError("");
 
-      const response = await createOrder();
+      // Step 1: Load Razorpay Checkout script
+      const isScriptLoaded = await loadRazorpayScript();
 
-      alert(`Order ${response.data._id} created successfully`);
+      if (!isScriptLoaded) {
+        throw new Error("Unable to load Razorpay. Please try again.");
+      }
 
-      dispatch(fetchCart());
-    } catch (err) {
+      // Step 2: Create MongoDB order
+      const orderResponse = await createOrder();
+
+      const mongoOrderId = orderResponse.data._id;
+
+      console.log("MongoDB Order ID:", mongoOrderId);
+
+      // Step 3: Create Razorpay payment order
+      const paymentResponse = await createPayment(mongoOrderId);
+
+      console.log("Razorpay Order:", paymentResponse);
+
+      // Step 4: Configure Razorpay Checkout
+      const options = {
+        key: paymentResponse.key,
+
+        amount: paymentResponse.amount,
+
+        currency: paymentResponse.currency,
+
+        name: "Mega Mart",
+
+        description: "Order Payment",
+
+        order_id: paymentResponse.orderId,
+
+        handler: async function (response) {
+          try {
+            console.log("Razorpay Response:", response);
+
+            // Step 5: Verify payment on backend
+            const verifyResponse = await verifyPayment({
+              razorpay_order_id: response.razorpay_order_id,
+              razorpay_payment_id: response.razorpay_payment_id,
+              razorpay_signature: response.razorpay_signature,
+            });
+
+            if (verifyResponse.success) {
+              alert("Payment successful!");
+
+              // Refresh cart
+              dispatch(fetchCart());
+
+              // Navigate to order success page
+              navigate("/orders/success");
+            }
+          } catch (error) {
+            console.error("Payment verification error:", error);
+
+            setOrderError(
+              error.response?.data?.message ||
+                "Payment verification failed. Please contact support.",
+            );
+          } finally {
+            setOrdering(false);
+          }
+        },
+
+        modal: {
+          ondismiss: function () {
+            console.log("Payment window closed");
+            setOrdering(false);
+          },
+        },
+
+        theme: {
+          color: "#3399cc",
+        },
+      };
+
+      // Step 6: Open Razorpay payment window
+      const razorpay = new window.Razorpay(options);
+
+      razorpay.on("payment.failed", function (response) {
+        console.error("Payment failed:", response.error);
+
+        setOrderError(
+          response.error.description || "Payment failed. Please try again.",
+        );
+
+        setOrdering(false);
+      });
+
+      razorpay.open();
+    } catch (error) {
+      console.error("Checkout error:", error);
+
       setOrderError(
-        err.response?.data?.message || "Checkout failed. Please try again.",
+        error.response?.data?.message ||
+          error.message ||
+          "Checkout failed. Please try again.",
       );
 
-      // Refresh cart because stock may have changed
-      dispatch(fetchCart());
-    } finally {
       setOrdering(false);
     }
   };
@@ -251,7 +380,7 @@ const Cart = () => {
               </div>
             </div>
 
-            <button
+            {/* <button
               disabled={ordering || hasStockIssue}
               onClick={handleCheckout}
               className="mt-7 w-full rounded-xl bg-cyan-600 py-3 font-semibold text-white hover:bg-cyan-700 disabled:bg-gray-300"
@@ -261,7 +390,20 @@ const Cart = () => {
                 : hasStockIssue
                   ? "Update Cart Before Checkout"
                   : "Checkout"}
+            </button> */}
+
+            <button
+              onClick={handleCheckout}
+              disabled={ordering || items.length === 0 || hasStockIssue}
+              className="w-full bg-black text-white py-3 rounded-lg
+             hover:bg-gray-800 disabled:opacity-50"
+            >
+              {ordering ? "Processing..." : "Proceed to Payment"}
             </button>
+
+            {orderError && (
+              <p className="text-red-500 text-sm mt-2">{orderError}</p>
+            )}
           </div>
         </div>
       )}
