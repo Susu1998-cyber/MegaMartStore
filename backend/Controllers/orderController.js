@@ -18,6 +18,11 @@ const createOrder = async (req, res) => {
           user: req.user._id,
         }).session(session);
 
+        console.log("Authenticated User ID:", String(req.user._id));
+        console.log("Cart ID:", cart ? String(cart._id) : null);
+        console.log("Items:", cart?.items);
+        console.log("Item count:", cart?.items?.length);
+
         if (!cart || cart.items.length === 0) {
           const error = new Error("Cart is empty");
           error.statusCode = 400;
